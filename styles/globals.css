@@ -19,11 +19,16 @@
 }
 
 body {
-  @apply bg-background text-text font-sans antialiased selection:bg-neon-cyan/30 selection:text-text;
+  @apply bg-background text-text font-sans antialiased;
   background-image: radial-gradient(circle at top left, rgba(0, 229, 255, 0.12), transparent 55%),
     radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.12), transparent 55%);
   background-color: var(--bg);
   overflow-x: hidden;
+}
+
+::selection {
+  background-color: rgba(0, 229, 255, 0.3);
+  color: var(--text);
 }
 
 ::-webkit-scrollbar {
