@@ -41,7 +41,8 @@ body {
 }
 
 .glass-panel {
-  @apply bg-white/5 border border-white/10 backdrop-blur-xl shadow-lg shadow-neon-cyan/10;
+  @apply bg-white/5 border border-white/10 backdrop-blur-xl shadow-lg;
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.12);
 }
 
 .glow-hover {
