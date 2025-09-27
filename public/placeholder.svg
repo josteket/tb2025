@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0B1E2D" />
+  <rect x="24" y="24" width="464" height="464" fill="none" stroke="#00E5FF" stroke-width="6" stroke-dasharray="20 16" opacity="0.8" />
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="42" fill="#E6ECF3" letter-spacing="4">
+    Заглушка
+  </text>
+</svg>

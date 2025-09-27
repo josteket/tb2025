@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: #0B1E2D;
+  --bg-2: #0F2638;
+  --text: #E6ECF3;
+  --muted: #9BA8B6;
+  --accent-red: #E53935;
+  --neon-cyan: #00E5FF;
+  --neon-purple: #A855F7;
+  --silver: #CFD8E3;
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-text font-sans antialiased selection:bg-neon-cyan/30 selection:text-text;
+  background-image: radial-gradient(circle at top left, rgba(0, 229, 255, 0.12), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.12), transparent 55%);
+  background-color: var(--bg);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-cyan), var(--neon-purple));
+  border-radius: 9999px;
+}
+
+.glass-panel {
+  @apply bg-white/5 border border-white/10 backdrop-blur-xl shadow-lg shadow-neon-cyan/10;
+}
+
+.glow-hover {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+.focus-outline:focus-visible {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
