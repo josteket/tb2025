@@ -7,21 +7,22 @@ import { EffectComposer, Bloom, ChromaticAberration, Noise } from "@react-three/
 import { BlendFunction } from "postprocessing";
 import { featureFlags } from "@/lib/featureFlags";
 import * as THREE from "three";
-import { BufferGeometryUtils } from "three/examples/jsm/utils/BufferGeometryUtils.js";
+import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
 function Helmet() {
   const mesh = useRef<THREE.Mesh>(null);
   const normalMap = useMemo(() => {
     const size = 128;
-    const data = new Uint8Array(size * size * 3);
+    const data = new Uint8Array(size * size * 4);
     for (let i = 0; i < size * size; i++) {
-      const stride = i * 3;
+      const stride = i * 4;
       const value = 128 + Math.sin(i / 7) * 20;
       data[stride] = 128;
       data[stride + 1] = value;
       data[stride + 2] = 255 - value;
+      data[stride + 3] = 255;
     }
-    const texture = new THREE.DataTexture(data, size, size, THREE.RGBFormat);
+    const texture = new THREE.DataTexture(data, size, size, THREE.RGBAFormat);
     texture.colorSpace = THREE.SRGBColorSpace;
     texture.needsUpdate = true;
     return texture;
@@ -44,7 +45,7 @@ function Helmet() {
     visor.translate(0, -0.1, 0);
     base.translate(0, -0.9, 0);
 
-    const merged = BufferGeometryUtils.mergeGeometries([helmet, visor, base], false);
+    const merged = mergeGeometries([helmet, visor, base], false);
     return merged;
   }, []);
 
