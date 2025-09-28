@@ -46,11 +46,27 @@ export default function GridBackdrop() {
         ctx.stroke();
       }
 
+      ctx.strokeStyle = "rgba(229, 57, 53, 0.12)";
+      ctx.setLineDash([gridSize * 0.5, gridSize * 0.5]);
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height / 2 + Math.sin(time * 0.001) * 40);
+      ctx.lineTo(canvas.width, canvas.height / 2 + Math.sin(time * 0.001) * 40);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
       ctx.fillStyle = "rgba(0, 229, 255, 0.05)";
-      for (let i = 0; i < 120; i++) {
+      for (let i = 0; i < 140; i++) {
         const x = (Math.random() * canvas.width) % canvas.width;
         const y = (Math.random() * canvas.height + time * 0.05) % canvas.height;
-        ctx.fillRect(x, y, 2, 2);
+        const size = Math.random() * 2 + 0.5;
+        ctx.fillRect(x, y, size, size);
+      }
+
+      ctx.fillStyle = "rgba(229, 57, 53, 0.06)";
+      for (let i = 0; i < 60; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        ctx.fillRect(x, y, 1.5, 1.5);
       }
     };
 
@@ -78,6 +94,7 @@ export default function GridBackdrop() {
     <div className="pointer-events-none fixed inset-0 z-0">
       <canvas ref={canvasRef} className="h-full w-full opacity-60 mix-blend-screen" aria-hidden />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" aria-hidden />
+      <div className="blood-fog" aria-hidden />
     </div>
   );
 }

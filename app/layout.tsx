@@ -7,9 +7,7 @@ import Footer from "@/components/Footer";
 import GridBackdrop from "@/components/GridBackdrop";
 import ScrollProgress from "@/components/ScrollProgress";
 import Preloader from "@/components/Preloader";
-import dynamic from "next/dynamic";
-
-const CursorTrail = dynamic(() => import("@/components/CursorTrail"), { ssr: false });
+import RouteTransition from "@/components/RouteTransition";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter" });
 const jetbrains = JetBrains_Mono({ subsets: ["latin", "cyrillic"], variable: "--font-jetbrains" });
@@ -57,8 +55,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ru" className="scroll-smooth">
       <body className={clsx(inter.variable, jetbrains.variable, "relative min-h-screen bg-background")}> 
         <Preloader />
+        <RouteTransition />
         <GridBackdrop />
-        <CursorTrail />
         <Header />
         <main className="relative z-10 flex min-h-screen flex-col pt-20" id="top">
           {children}

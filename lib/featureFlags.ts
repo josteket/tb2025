@@ -1,15 +1,17 @@
 export type FeatureFlags = {
   enablePostProcessing: boolean;
-  enableCursorTrail: boolean;
   enableParticles: boolean;
   enableScrollAnimations: boolean;
+  enableHeroGlitch: boolean;
+  enableCaseTransitions: boolean;
 };
 
 const defaultFlags: FeatureFlags = {
   enablePostProcessing: true,
-  enableCursorTrail: true,
   enableParticles: true,
   enableScrollAnimations: true,
+  enableHeroGlitch: true,
+  enableCaseTransitions: true,
 };
 
 export const featureFlags: FeatureFlags = (() => {
@@ -22,9 +24,10 @@ export const featureFlags: FeatureFlags = (() => {
   if (prefersReducedMotion) {
     return {
       enablePostProcessing: false,
-      enableCursorTrail: false,
       enableParticles: false,
       enableScrollAnimations: false,
+      enableHeroGlitch: false,
+      enableCaseTransitions: false,
     };
   }
 

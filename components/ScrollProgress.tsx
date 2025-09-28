@@ -21,12 +21,26 @@ export default function ScrollProgress() {
   const circumference = 2 * Math.PI * 18;
   const dashOffset = circumference - circumference * progress;
 
+  const handleClick = () => {
+    const topAnchor = document.querySelector("#top");
+    if (topAnchor) {
+      topAnchor.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const isVisible = progress > 0.03;
+
   return (
     <button
+      type="button"
       onClick={() => {
-        document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" });
+        handleClick();
       }}
-      className="fixed bottom-6 right-6 flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-background/80 backdrop-blur-lg text-neon-cyan shadow-glow focus-outline"
+      className={`scroll-progress-btn fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-background/80 backdrop-blur-lg text-neon-cyan focus-outline transition-opacity duration-300 ${
+        isVisible ? "opacity-100" : "pointer-events-none opacity-0"
+      }`}
       aria-label="Наверх"
     >
       <svg className="absolute h-14 w-14 -rotate-90" viewBox="0 0 40 40" aria-hidden>

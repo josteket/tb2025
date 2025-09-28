@@ -58,7 +58,9 @@ export default function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all ${
-        scrolled ? "backdrop-blur-xl bg-background/70 border-b border-white/10" : "bg-transparent"
+        scrolled
+          ? "border-b border-white/10 bg-background/80 backdrop-blur-xl shadow-[0_20px_60px_rgba(229,57,53,0.15)]"
+          : "bg-transparent"
       }`}
       aria-label="Главная навигация"
     >
@@ -68,10 +70,17 @@ export default function Header() {
           className="group flex items-center gap-3 focus-outline"
           aria-label="Перейти к началу"
         >
-          <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/20 bg-white/5">
+          <motion.div
+            className="relative h-10 w-10 overflow-hidden rounded-full border border-white/20 bg-white/5"
+            whileHover={{ rotate: [-2, 2, 0], scale: 1.05 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
             <Image src="/placeholder.svg" alt="Заглушка логотипа" fill sizes="40px" className="object-cover" priority />
-            <span className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
-          </div>
+            <span
+              className="absolute inset-0 bg-[linear-gradient(120deg,rgba(229,57,53,0.45),rgba(0,229,255,0.3))] opacity-0 mix-blend-screen transition-opacity duration-300 group-hover:opacity-70"
+              aria-hidden
+            />
+          </motion.div>
           <span className="font-mono text-sm uppercase tracking-[0.2em] text-muted">
             ООО «Титаны будущего»
           </span>
@@ -110,6 +119,7 @@ export default function Header() {
           className="md:hidden focus-outline"
           onClick={() => setOpen((prev) => !prev)}
           aria-label="Открыть меню"
+          aria-expanded={open}
         >
           <Menu className="h-6 w-6 text-neon-cyan" />
         </button>

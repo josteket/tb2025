@@ -1,15 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { featureFlags } from "@/lib/featureFlags";
 
 const HeroCanvas = dynamic(() => import("@/components/HeroCanvas"), { ssr: false });
 
 export default function Hero() {
   const [showCanvas, setShowCanvas] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
+  const allowHeroGlitch = useMemo(
+    () => featureFlags.enableHeroGlitch && !prefersReducedMotion,
+    [prefersReducedMotion]
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -73,10 +79,23 @@ export default function Hero() {
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <div className="relative flex items-center justify-center">
-            <div className="absolute h-72 w-72 rounded-full bg-neon-cyan/10 blur-3xl" aria-hidden />
+            <div className="absolute h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(229,57,53,0.28),transparent_65%)] blur-3xl" aria-hidden />
             <motion.div
-              whileHover={{ rotateZ: 2, scale: 1.05 }}
-              className="relative h-72 w-72 overflow-hidden rounded-full border border-white/10 bg-white/5 p-6 shadow-glow"
+              className="hero-emblem group relative h-[18rem] w-[18rem] overflow-hidden rounded-full border border-white/10 bg-white/5 p-8 shadow-glow"
+              animate={
+                allowHeroGlitch
+                  ? {
+                      rotate: [0, 1.5, -1.2, 0.6, 0],
+                      scale: [1, 1.02, 0.98, 1],
+                    }
+                  : undefined
+              }
+              transition={{
+                duration: 8,
+                repeat: allowHeroGlitch ? Infinity : 0,
+                ease: "easeInOut",
+              }}
+              whileHover={{ rotateZ: allowHeroGlitch ? 4 : 2, scale: 1.05 }}
             >
               <Image
                 src="/placeholder.svg"
@@ -84,8 +103,43 @@ export default function Hero() {
                 fill
                 className="object-contain"
                 sizes="(max-width: 768px) 280px, 360px"
+                priority
               />
-              <div className="absolute inset-0 animate-pulse-slow bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.35),transparent_60%)] mix-blend-screen" />
+              {allowHeroGlitch && (
+                <>
+                  <motion.div
+                    aria-hidden
+                    className="absolute inset-0 mix-blend-screen"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: [0, 0.5, 0.1, 0.4, 0],
+                      x: [0, -6, 4, -2, 0],
+                    }}
+                    transition={{ duration: 3.6, repeat: Infinity, ease: "linear" }}
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(120deg, rgba(0,229,255,0.25) 0%, rgba(168,85,247,0.4) 55%, rgba(229,57,53,0.3) 100%)",
+                    }}
+                  />
+                  <motion.div
+                    aria-hidden
+                    className="absolute inset-0 glitch-scan"
+                    animate={{ backgroundPositionY: ["0%", "200%"] }}
+                    transition={{ duration: 2.8, repeat: Infinity, ease: "linear" }}
+                  />
+                </>
+              )}
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.22),transparent_55%)] mix-blend-screen" aria-hidden />
+              <motion.div
+                className="pointer-events-none absolute inset-0"
+                aria-hidden
+                animate={
+                  allowHeroGlitch
+                    ? { boxShadow: ["0 0 0px rgba(229,57,53,0.0)", "0 0 90px rgba(229,57,53,0.32)", "0 0 0px rgba(229,57,53,0.0)"] }
+                    : undefined
+                }
+                transition={{ duration: 5.5, repeat: allowHeroGlitch ? Infinity : 0, ease: "easeInOut" }}
+              />
             </motion.div>
           </div>
         </motion.div>

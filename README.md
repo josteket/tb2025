@@ -39,7 +39,7 @@ app/
 components/
   Hero.tsx, About.tsx, Cases.tsx, Contacts.tsx
   HeroCanvas.tsx  # Three.js сцена шлема и частицы
-  Header.tsx, Footer.tsx, GridBackdrop.tsx, ScrollProgress.tsx, Preloader.tsx, CursorTrail.tsx
+  Header.tsx, Footer.tsx, GridBackdrop.tsx, ScrollProgress.tsx, Preloader.tsx, RouteTransition.tsx
   CaseCard.tsx, ContactCard.tsx, SectionHeading.tsx, StatPill.tsx
   ui/             # шадсн-компоненты (button, card, badge, dialog)
 data/
@@ -85,10 +85,11 @@ styles/
 
 ```ts
 export const featureFlags = {
-  enablePostProcessing: true, // bloom + хром. аберрация в 3D-сцене
-  enableCursorTrail: true,    // неоновый шлейф за курсором (desktop)
-  enableParticles: true,      // частицы фона и 3D-хвост
-  enableScrollAnimations: true // GSAP ScrollTrigger
+  enablePostProcessing: true,   // bloom + хром. аберрация в 3D-сцене
+  enableParticles: true,        // частицы фона и 3D-хвост
+  enableScrollAnimations: true, // GSAP ScrollTrigger
+  enableHeroGlitch: true,       // вращение/глитч центральной эмблемы
+  enableCaseTransitions: true   // эффект перехода кейсов в полноэкранный режим
 };
 ```
 
@@ -96,7 +97,7 @@ export const featureFlags = {
 
 Дополнительно:
 
-- Компоненты Three.js и CursorTrail грузятся динамически (`ssr: false`), чтобы не нагружать SSR.
+- Three.js сцена и тяжёлые анимации (GSAP, пост-эффекты) загружаются динамически, чтобы не нагружать SSR.
 - GSAP и ScrollTrigger импортируются лениво при первом рендере клиента.
 
 ## Оптимизация и Lighthouse
@@ -123,5 +124,6 @@ export const featureFlags = {
 - Все компоненты сейчас используют `/placeholder.svg` как универсальную заглушку. После добавления реальных ассетов обновите пути в JSX и данных.
 - 3D-шлем — процедурная low-poly модель. Чтобы подключить полноценный GLB-файл, замените компонент `Helmet` в `HeroCanvas.tsx` на загрузку модели через `useGLTF` из `@react-three/drei` (см. комментарий в коде).
 - Для кастомизации палитры отредактируйте CSS-переменные в `styles/globals.css`.
+- Эффект «боевого» прелоадера и переходы между кейсами/страницами можно отключить через `featureFlags` (`enableHeroGlitch`, `enableCaseTransitions`).
 
 Готово! 🎯

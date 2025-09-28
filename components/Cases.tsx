@@ -1,6 +1,7 @@
 import SectionHeading from "@/components/SectionHeading";
 import CaseCard from "@/components/CaseCard";
 import { cases } from "@/data/cases";
+import { LayoutGroup } from "framer-motion";
 
 export default function Cases() {
   return (
@@ -9,11 +10,13 @@ export default function Cases() {
         <SectionHeading title="Кейсы" eyebrow="Без права на ошибку">
           Кейсы, которые показывают наш подход: точность планирования, контроль исполнения и результат, за который отвечаем.
         </SectionHeading>
-        <div className="grid gap-8 md:grid-cols-2" data-animate="stagger">
-          {cases.map((project) => (
-            <CaseCard key={project.title} {...project} />
-          ))}
-        </div>
+        <LayoutGroup id="cases">
+          <div className="grid gap-8 md:grid-cols-2" data-animate="stagger">
+            {cases.map((project) => (
+              <CaseCard key={project.title} {...project} />
+            ))}
+          </div>
+        </LayoutGroup>
       </div>
     </section>
   );
