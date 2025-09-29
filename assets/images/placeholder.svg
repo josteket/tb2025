@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" fill="none">
+  <rect width="320" height="200" fill="#0B1E2D" stroke="#00E5FF" stroke-dasharray="12 12"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#E6ECF3" font-family="'JetBrains Mono', monospace" font-size="20">Заглушка</text>
+</svg>
