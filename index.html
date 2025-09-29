@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Титаны будущего — делаем сложное простым</title>
+    <meta
+      name="description"
+      content="Технологичный подход, дисциплина и результат. «Титаны будущего» — когда нужно надёжно и в срок."
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div id="preloader" aria-hidden="true">
+      <div class="preloader__inner">
+        <svg class="preloader__logo" viewBox="0 0 120 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="preloaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00E5FF" />
+              <stop offset="100%" stop-color="#A855F7" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M20 100L60 20l40 80"
+            fill="none"
+            stroke="url(#preloaderGradient)"
+            stroke-width="8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path d="M38 78h44" stroke="#E53935" stroke-width="6" stroke-linecap="round" />
+        </svg>
+        <p class="preloader__caption">ООО «Титаны будущего»</p>
+        <p class="preloader__motto">Готовимся к бою…</p>
+      </div>
+    </div>
+
+    <canvas id="grid-canvas" aria-hidden="true"></canvas>
+
+    <header class="site-header" id="top">
+      <div class="container site-header__inner">
+        <a class="logo" href="#hero" aria-label="Перейти к началу страницы">
+          <span class="logo__mark">TF</span>
+          <span class="logo__text">Титаны будущего</span>
+        </a>
+        <nav aria-label="Основная навигация">
+          <ul class="site-nav">
+            <li><a href="#hero" class="site-nav__link">Главная</a></li>
+            <li><a href="#about" class="site-nav__link">О компании</a></li>
+            <li><a href="#cases" class="site-nav__link">Кейсы</a></li>
+            <li><a href="#contacts" class="site-nav__link">Контакты</a></li>
+          </ul>
+        </nav>
+        <button class="button button--ghost" data-scroll-target="#contacts">Связаться</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="section hero">
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <p class="badge">ООО «Титаны будущего»</p>
+            <h1 class="hero__title">Мы делаем сложное — простым. Надёжно. В срок.</h1>
+            <p class="hero__subtitle">
+              Объединяем дисциплину и технологии, чтобы давать заказчикам результат, который выдерживает любые дедлайны и проверки.
+            </p>
+            <div class="hero__actions">
+              <button class="button" data-scroll-target="#contacts">Перейти к контактам</button>
+              <button class="button button--secondary" data-scroll-target="#cases">Смотреть кейсы</button>
+            </div>
+            <div class="hero__stats">
+              <div class="stat" data-counter="10">
+                <span class="stat__value">0</span>
+                <span class="stat__label">10/10 — выполненных обязательств</span>
+              </div>
+              <div class="stat" data-counter="24">
+                <span class="stat__value">0</span>
+                <span class="stat__label">24/7 — на связи по ключевым проектам</span>
+              </div>
+              <div class="stat" data-counter="100">
+                <span class="stat__value">0</span>
+                <span class="stat__label">100% — прозрачность работ и бюджета</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero__visual" aria-hidden="true">
+            <canvas id="hero-canvas"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section about">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-heading__eyebrow">Кодекс</span>
+            <h2 class="section-heading__title">О компании</h2>
+            <p class="section-heading__subtitle">
+              «Титаны будущего» — команда, родившаяся из практики. Мы не обещаем — мы делаем. Готовы брать ответственность,
+              держать слово и закрывать задачи под ключ. В основе — инженерная точность, прозрачные процессы и уважение к срокам.
+            </p>
+          </div>
+          <div class="about__grid">
+            <div class="about__card">
+              <h3>Ценности</h3>
+              <ul class="bullet-list">
+                <li>Надёжность как стандарт.</li>
+                <li>Скорость без хаоса.</li>
+                <li>Честные сметы и контроль качества.</li>
+                <li>Коммуникация на человеческом языке.</li>
+              </ul>
+            </div>
+            <div class="about__card about__card--accent">
+              <h3>Миссия</h3>
+              <p>
+                Объединяем дисциплину и технологии, чтобы давать заказчикам результат, который выдерживает любые дедлайны и проверки.
+              </p>
+            </div>
+            <div class="about__card">
+              <h3>Подход</h3>
+              <p>
+                Каждый проект — боевое задание: чёткий план, резервные сценарии и команда, которая держит строй от брифа до сдачи.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cases" class="section cases">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-heading__eyebrow">Арсенал</span>
+            <h2 class="section-heading__title">Кейсы</h2>
+            <p class="section-heading__subtitle">
+              Конфиденциальность клиентов соблюдаем, поэтому делимся только фактами: сроки, процессы и результат.
+            </p>
+          </div>
+          <div class="cases__grid" id="cases-grid" role="list"></div>
+        </div>
+      </section>
+
+      <section id="contacts" class="section contacts">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-heading__eyebrow">Связь</span>
+            <h2 class="section-heading__title">Контакты</h2>
+            <p class="section-heading__subtitle">
+              Готовы подключиться к вашему проекту и удержать темп до финального акта.
+            </p>
+          </div>
+          <div class="contacts__grid">
+            <div class="contact-card">
+              <h3>ООО «Титаны будущего»</h3>
+              <p>Email: <a href="mailto:info@titans2059.ru">info@titans2059.ru</a></p>
+              <p>Телефон: <a href="tel:+79990000000">+7 (999) 000-00-00</a></p>
+              <p>Санкт-Петербург, Россия</p>
+              <div class="contact-card__actions">
+                <a class="button" href="mailto:info@titans2059.ru?subject=Запрос%20от%20клиента">Написать на почту</a>
+                <button class="button button--secondary" id="copy-email" data-email="info@titans2059.ru">Скопировать email</button>
+              </div>
+            </div>
+            <div class="contact-card contact-card--map">
+              <img src="assets/images/placeholder.svg" alt="Заглушка карты" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p>© Титаны будущего, 2025</p>
+        <nav aria-label="Навигация футера">
+          <ul class="footer-nav">
+            <li><a href="#hero">Главная</a></li>
+            <li><a href="#about">О компании</a></li>
+            <li><a href="#cases">Кейсы</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+          </ul>
+        </nav>
+        <div class="socials">
+          <a href="#" aria-label="Telegram" rel="noopener noreferrer">TG</a>
+          <a href="#" aria-label="VK" rel="noopener noreferrer">VK</a>
+          <a href="#" aria-label="YouTube" rel="noopener noreferrer">YT</a>
+        </div>
+      </div>
+    </footer>
+
+    <button id="scroll-top" class="scroll-top" aria-label="Наверх">
+      <svg viewBox="0 0 48 48" role="presentation" aria-hidden="true">
+        <circle class="scroll-top__track" cx="24" cy="24" r="20" />
+        <circle class="scroll-top__progress" cx="24" cy="24" r="20" />
+        <polyline points="18 26 24 20 30 26" />
+      </svg>
+    </button>
+
+    <div class="case-dialog" id="case-dialog" aria-hidden="true">
+      <div class="case-dialog__overlay" data-dialog-close></div>
+      <div class="case-dialog__content" role="dialog" aria-modal="true" aria-labelledby="case-dialog-title">
+        <button class="case-dialog__close" type="button" data-dialog-close aria-label="Закрыть">×</button>
+        <img id="case-dialog-image" src="assets/images/placeholder.svg" alt="" />
+        <div class="case-dialog__body">
+          <h3 id="case-dialog-title"></h3>
+          <p id="case-dialog-summary"></p>
+          <p id="case-dialog-result"></p>
+          <div id="case-dialog-tags" class="case-dialog__tags"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cursor-trail" aria-hidden="true"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha256-0n0xP9W7HQwZ0pniNXh9vDOMkMt2rt7NmBGG99nmCa4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha256-L4n1vCtbmZhGXPx8uxFazc2DSES0finBmMOPqlmkVQ0=" crossorigin="anonymous"></script>
+    <script type="module" src="assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="24" fill="#0F2638" />
-  <rect x="32" y="32" width="448" height="448" rx="20" fill="none" stroke="#00E5FF" stroke-width="6" stroke-dasharray="18 12" />
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#E6ECF3" font-family="'Inter', 'Segoe UI', sans-serif" font-size="48" font-weight="700" letter-spacing="2">
-    Заглушка
-  </text>
-</svg>
