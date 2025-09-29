@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: #0b1e2d;
+  --bg-2: #0f2638;
+  --text: #e6ecf3;
+  --muted: #9ba8b6;
+  --accent-red: #e53935;
+  --neon-cyan: #00e5ff;
+  --neon-purple: #a855f7;
+  --silver: #cfd8e3;
+}
+
+body {
+  @apply bg-background text-text font-sans antialiased;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(0, 229, 255, 0.12), transparent 60%),
+    radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.08), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(229, 57, 53, 0.08), transparent 55%),
+    linear-gradient(120deg, rgba(11, 30, 45, 0.95), rgba(15, 38, 56, 0.88));
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(0, 229, 255, 0.2);
+  color: var(--text);
+}
+
+a {
+  @apply text-neon-cyan transition-colors;
+}
+
+a:hover {
+  @apply text-neon-purple;
+}
+
+.glass-panel {
+  backdrop-filter: blur(18px);
+  background: linear-gradient(
+      135deg,
+      rgba(15, 38, 56, 0.8),
+      rgba(11, 30, 45, 0.5)
+    );
+  border: 1px solid rgba(207, 216, 227, 0.12);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.12);
+}
+
+.noise-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  mix-blend-mode: screen;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+.reduced-motion * {
+  transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+}
